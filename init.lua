@@ -302,6 +302,8 @@ require('telescope').setup {
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
+-- dialogo de telescope para menu de harpoon
+pcall(require("telescope").load_extension, 'harpoon')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
@@ -327,6 +329,9 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
+    modules = {},
+    sync_install = true,
+    ignore_install = {},
     -- Add languages to be installed here that you want installed for treesitter
     ensure_installed = { 'c', 'cpp', 'lua', 'python', 'javascript', 'typescript', 'vimdoc', 'vim', 'java', 'bash' },
 
@@ -510,6 +515,18 @@ require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
 
 cmp.setup {
+  revision = 1,
+  enabled = true,
+  performance = {},
+  preselect = 'None',
+  completion = {},
+  confirmation = {},
+  matching = {},
+  sorting = {},
+  formatting = {},
+  view = {},
+  experimental = { ghost_text = true },
+  -- agregué lo de arriba para sacar los warnings
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -565,6 +582,7 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+vim.api.nvim_command('filetype plugin indent on')
 
 
 -- The line beneath this is called `modeline`. See `:help modeline`

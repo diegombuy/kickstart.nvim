@@ -9,6 +9,7 @@ return {
 		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 		"MunifTanjim/nui.nvim",
 	},
+	-- Esto hace que se abra al inicio filetree (no me gusta)
 	-- config = function()
 	-- 	require('neo-tree').setup {}
 	-- end,

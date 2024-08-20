@@ -13,4 +13,5 @@ end)
 -- init.lua
 require 'lspconfig'.jdtls.setup { cmd = { 'jdtls' } }
 
-lsp_zero.setup_servers({ 'jdtls', 'lua_ls', 'java_language_server' })
+-- lsp_zero.setup_servers({ 'jdtls', 'lua_ls', 'java_language_server' })
+lsp_zero.setup_servers({ 'jdtls', 'lua_ls' })
